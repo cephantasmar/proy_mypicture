@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Compra de Imágenes</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .container {
+            max-width: 800px;
+        }
+        .imagen-container {
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .imagen-container:hover {
+            transform: scale(1.05);
+        }
+        .imagen-container img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .descripcion {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Seleccione las imágenes que desea comprar</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="imagen-container" data-imagen="imagen1">
+                    <img src="imagen1.jpg" alt="Imagen 1">
+                </div>
+                <div class="descripcion">
+                    <p class="text-center">Foto de la Plaza Murillo, uno de los lugares más emblemáticos de La Paz.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="imagen-container" data-imagen="imagen2">
+                    <img src="imagen2.jpg" alt="Imagen 2">
+                </div>
+                <div class="descripcion">
+                    <p class="text-center">Vista panorámica de la ciudad de La Paz desde el mirador Killi Killi.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="imagen-container" data-imagen="imagen3">
+                    <img src="imagen3.jpg" alt="Imagen 3">
+                </div>
+                <div class="descripcion">
+                    <p class="text-center">Foto del mercado de las brujas, conocido por vender productos tradicionales y místicos.</p>
+                </div>
+            </div>
+ 
+            <div class="col-md-4">
+                <div class="imagen-container" data-imagen="imagen4">
+                    <img src="imagen4.jpg" alt="Imagen 4">
+                </div>
+                <div class="descripcion">
+                    <p class="text-center">Vista del centro histórico de La Paz desde la Calle Jaén.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="imagen-container" data-imagen="imagen5">
+                    <img src="imagen5.jpg" alt="Imagen 5">
+                </div>
+                <div class="descripcion">
+                    <p class="text-center">Foto de la Basílica de San Francisco, un importante monumento histórico en La Paz.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="imagen-container" data-imagen="imagen6">
+                    <img src="imagen6.jpg" alt="Imagen 6">
+                </div>
+                <div class="descripcion">
+                    <p class="text-center">Vista del nevado Huayna Potosí, una de las montañas más icónicas cerca de La Paz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-primary" id="agregarCarrito">Añadir al Carrito</button>
+        </div>
+    </div>
+
+    <script>
+      
+        document.getElementById('agregarCarrito').addEventListener('click', function() {
+            var imagenesSeleccionadas = [];
+            document.querySelectorAll('.imagen-container.selected').forEach(function(container) {
+                imagenesSeleccionadas.push(container.dataset.imagen);
+            });
+            localStorage.setItem('imagenesSeleccionadas', JSON.stringify(imagenesSeleccionadas));
+            window.location.href = 'carrito_compras.html';
+        });
+
+
+        document.querySelectorAll('.imagen-container').forEach(function(container) {
+            container.addEventListener('click', function() {
+                container.classList.toggle('selected');
+            });
+        });
+    </script>
+</body>
+</html>
