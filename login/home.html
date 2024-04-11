@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<style>
+    /* Estilos CSS omitidos por brevedad */
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bienvenido a la página de inicio</h2>
+        <h3>Usuarios Registrados:</h3>
+        <ul id="usuarios"></ul>
+    </div>
+    <script>
+        // Mostrar usuarios registrados al cargar la página
+        window.onload = function() {
+            var usuarios = localStorage.getItem("usuarios");
+            if (usuarios !== null) {
+                usuarios = JSON.parse(usuarios);
+                var listaUsuarios = document.getElementById("usuarios");
+                usuarios.forEach(function(usuario) {
+                    var li = document.createElement("li");
+                    li.textContent = usuario;
+                    listaUsuarios.appendChild(li);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

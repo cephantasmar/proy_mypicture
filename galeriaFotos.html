@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeria</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .publicacion {
+            margin-bottom: 20px;
+        }
+
+        .publicacion .card {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .publicacion .card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">My Picture</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#eventos">Pedido fotografia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="galeriaFotos.html">Galería de Fotos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="formulario/formulario_reserva.html">Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Iniciar sesion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="mt-4">Nuestra galeria</h1>
+        <div id="lista-publicaciones" class="row">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            cargarPublicaciones();
+        });
+
+        function cargarPublicaciones() {
+            $.ajax({
+                type: 'GET',
+                url: 'obtener_publicaciones.php',
+                success: function(response) {
+                    $('#lista-publicaciones').html(response);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

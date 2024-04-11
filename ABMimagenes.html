@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <title>Reservas</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilosABM.css">
+    <title>ABM de Publicaciones</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">My Picture</a>
@@ -33,32 +30,29 @@
             </ul>
         </div>
     </nav>
-    <div class="div-titulo">
-        <h1>Reservas</h1>
-    </div>
-
-    <div class="contenedor">
-
-        <div class="div-formulario">
-            <h2>Formulario</h2>
-
-            <form action="#" id="formulario">
-                <input type="text" id="nombre" placeholder="Ingresa un nombre">
-                <input type="text" id="puesto" placeholder="Ingresa el puesto">
-                <button type="submit" id="btnAgregar">Agregar</button>
-            </form>
-        </div>
-
-        <div class="div-listado">
-            <h2>Listado Empleados</h2>
-            <div class="div-empleados">
-
+    <div class="container">
+        <h1 class="mt-4">ABM de Publicaciones</h1>
+        
+        <!-- Formulario  -->
+        <form id="formulario" enctype="multipart/form-data" class="mt-4">
+            <div class="form-group">
+                <input type="text" name="titulo" class="form-control" placeholder="Título" required>
             </div>
-        </div>
+            <div class="form-group">
+                <input type="text" name="descripcion" class="form-control" placeholder="Descripción" required>
+            </div>
+            <div class="form-group">
+                <input type="file" name="imagen" class="form-control-file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Publicación</button>
+        </form>
 
+        <div id="lista-publicaciones" class="mt-4">
+        </div>
     </div>
 
-    <script src="abmReservas.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scriptsABMimagenes.js"></script>
 </body>
-
 </html>
